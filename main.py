@@ -1,22 +1,21 @@
-import streamlit as st
-from PIL import Image
-from numpy.typing import ArrayLike
 import numpy as np
+import streamlit as st
+from numpy.typing import ArrayLike
+from PIL import Image
 
 from app.models.model import Model, ModelConfig
-
 
 ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg"]
 
 
 def validate_image_filename(image_filename: str):
-    if image_filename is "":
+    if image_filename == "":
         raise ValueError("No image Selected")
 
 
 def validate_correct_extension(image_filename: str):
     if (
-        not "." in image_filename
+        "." not in image_filename
         and image_filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
     ):
         raise ValueError("Wrong filename format")
@@ -39,7 +38,6 @@ if image is not None:
     validate_correct_extension(image_filename)
 
     processed_image = process_image(bytes_data)
-
 
     model = Model(config=ModelConfig())
     img_bytes = model.detect_object(processed_image)

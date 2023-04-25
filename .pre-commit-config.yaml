@@ -1,0 +1,36 @@
+repos:
+-   repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+    -   id: python-check-mock-methods
+    -   id: python-check-blanket-noqa
+    -   id: python-no-eval
+    -   id: python-use-type-annotations
+-   repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.247
+    hooks:
+    -   id: ruff
+        args: ["--fix", "--exit-non-zero-on-fix", "--ignore", "E501,F401"]
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/PyCQA/pylint
+    rev: v2.16.2
+    hooks:
+    -   id: pylint
+        args: ["--fail-under", "9"]
+-   repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+    -   id: flake8
+-   repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+    -   id: isort
+-   repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+    -   id: black

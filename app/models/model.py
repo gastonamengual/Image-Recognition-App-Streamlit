@@ -1,5 +1,6 @@
-from dataclasses import dataclass
 import io
+from dataclasses import dataclass
+
 import cv2
 import matplotlib
 import matplotlib.pyplot as plt
