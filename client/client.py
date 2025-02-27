@@ -6,11 +6,13 @@ import streamlit as st
 from PIL import ImageFile
 
 USERNAME = "ezepiola"
-TOKEN_URL = "http://localhost:8000/generate_token"
+TOKEN_URL = "http://localhost:8000/token"
 API_URL = "http://localhost:8000/detect_objects"  # "https://image-recognition-app-fastapi.vercel.app/detect_objects"
 
 
-def get_payload(image: ImageFile, filename=str) -> dict[str, bytes]:
+def get_payload(
+    image: ImageFile, filename: str, ai_model_interface: str
+) -> dict[str, bytes]:
     buffer = io.BytesIO()
     image.save(buffer, format="jpeg")
     image_bytes = buffer.getvalue()
@@ -19,6 +21,7 @@ def get_payload(image: ImageFile, filename=str) -> dict[str, bytes]:
     payload = {
         "filename": filename,
         "image_bytes": image_base64,
+        "ai_model_interface": ai_model_interface,
     }
 
     return payload
