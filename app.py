@@ -15,7 +15,7 @@ uploaded_image = st.file_uploader(
 
 options = ["HuggingFace"]
 
-ai_model_interface = st.selectbox("Choose an AI model interface:", options)
+model_service = st.selectbox("Choose an AI model interface:", options)
 
 
 if uploaded_image is not None:
@@ -24,7 +24,7 @@ if uploaded_image is not None:
 
     image = Image.open(uploaded_image)
     placeholder.image(image, use_container_width=True)
-    payload = get_payload(image, filename, ai_model_interface)
+    payload = get_payload(image, filename, model_service)
 
     if st.button("Detect objects!"):
         get_token()
