@@ -5,9 +5,11 @@ import requests
 import streamlit as st
 from PIL import ImageFile
 
-USERNAME = "ezepiola"
-TOKEN_URL = "https://image-recognition-app-fastapi.vercel.app/token"
-API_URL = "https://image-recognition-app-fastapi.vercel.app/detect_objects"  # "http://localhost:8000/detect_objects"
+USERNAME = "gaston"
+TOKEN_URL = (
+    "https://gamrbackendservice-93u32xecj-gastonamenguals-projects.vercel.app/token"
+)
+API_URL = "https://gamrbackendservice-93u32xecj-gastonamenguals-projects.vercel.app/detect_objects"  # "http://localhost:8000/detect_objects"
 
 
 def get_payload(
