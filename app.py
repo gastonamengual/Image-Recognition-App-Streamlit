@@ -2,8 +2,7 @@ import streamlit as st
 from PIL import Image
 
 from client.api_connector import API_Connector
-from client.model import ImagePayload
-from client.settings import Settings
+from client.model import BackendService, ImagePayload, backend_service_urls
 from client.utils import preprocess_image, stop_execution
 
 st.title("Image Recognition App")
@@ -15,18 +14,14 @@ uploaded_image = st.file_uploader(
     "Upload an image", type=["png", "jpg", "jpeg"], accept_multiple_files=False
 )
 
-
-backend_serving = st.selectbox(
-    "Choose a Backend Service:", ["Render + Docker", "Vercel"]
+backend_service = st.selectbox(
+    "Choose a Backend Service:",
+    [option.value for option in BackendService],
 )
+backend_service_url = backend_service_urls[backend_service]
+
 model_service = st.selectbox("Choose an AI Model Registry", ["HuggingFace"])
 username = st.text_input("Enter your username")
-
-backend_serving_url = (
-    Settings.RENDER_DOCKER_BASE_URL
-    if backend_serving == "Render + Docker"
-    else Settings.VERCEL_BASE_URL
-)
 
 
 if uploaded_image is not None:
@@ -39,7 +34,7 @@ if uploaded_image is not None:
 
     if st.button("Detect objects!"):
 
-        api_connector = API_Connector(username=username, base_url=backend_serving_url)
+        api_connector = API_Connector(username=username, base_url=backend_service_url)
 
         response = api_connector.authenticate()
         token = response.json().get("token")
