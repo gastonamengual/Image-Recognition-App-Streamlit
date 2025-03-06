@@ -22,7 +22,8 @@ def main():
     backend_service_url = backend_service_urls[backend_service]
 
     model_service = st.selectbox("Choose an AI Model Registry", ["HuggingFace"])
-    username = st.text_input("Enter your username")
+
+    username = st.text_input("Enter your username", value="gaston").strip().lower()
 
     if uploaded_image is not None:
         filename = uploaded_image.name

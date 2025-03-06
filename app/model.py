@@ -13,8 +13,8 @@ class ImagePayload:
 
 @dataclass
 class BackendService(StrEnum):
-    RENDER_DOCKER = "Render + Docker"
     VERCEL = "Vercel"
+    RENDER_DOCKER = "Render + Docker"
 
 
 backend_service_urls = {
