@@ -13,6 +13,10 @@ def preprocess_image(image: ImageFile) -> bytes:
     return image_base64
 
 
+def get_token() -> str:
+    return st.session_state.token
+
+
 def stop_execution(message: str):
     st.error(message)
     st.stop()
