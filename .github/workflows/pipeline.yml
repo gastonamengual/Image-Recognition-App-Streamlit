@@ -1,0 +1,49 @@
+name: Main CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.12.9
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12.9
+
+    - name: Install pipenv
+      run: pip install pipenv
+
+    - name: Linter and style check
+      run: |
+        pip install pre-commit==4.1.0
+        pre-commit run --all-file
+
+    - name: Install dependencies
+      run: pipenv install --dev
+      env:
+        PIPENV_VENV_IN_PROJECT: 1
+
+    - name: Test with pytest
+      run: pipenv run test
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        files: |
+          pytest-report.xml
