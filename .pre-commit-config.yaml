@@ -29,4 +29,3 @@ repos:
     rev: "v1.15.0"
     hooks:
     -   id: mypy
-        exclude: ^app/views/templates/books

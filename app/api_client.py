@@ -27,7 +27,7 @@ class API_Client:
 
             if not response.ok:
                 raise TokenNotObtainedError(
-                    f"ERROR {response.status_code} - Token was not obtained: {response.json()}"
+                    f"ERROR {response.status_code} - Token not obtained: {response.json()}"
                 )
             token = response.json().get("token")
 
