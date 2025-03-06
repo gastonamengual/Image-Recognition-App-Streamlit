@@ -1,4 +1,4 @@
-from client.ui import main
+from app.ui import main
 
 if __name__ == "__main__":
     main()

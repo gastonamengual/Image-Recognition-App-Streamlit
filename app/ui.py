@@ -1,9 +1,9 @@
 import streamlit as st
 from PIL import Image
 
-from client.api_client import API_Client
-from client.model import BackendService, ImagePayload, backend_service_urls
-from client.utils import preprocess_image
+from app.api_client import API_Client
+from app.model import BackendService, ImagePayload, backend_service_urls
+from app.utils import preprocess_image
 
 
 def main():

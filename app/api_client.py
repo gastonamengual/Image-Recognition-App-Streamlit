@@ -2,8 +2,8 @@ from dataclasses import asdict, dataclass
 
 import requests  # type: ignore
 
-from client.error import DetectionNotObtained, TokenNotObtainedError
-from client.model import ImagePayload
+from app.error import DetectionNotObtained, TokenNotObtainedError
+from app.model import ImagePayload
 
 from .utils import get_token
 

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from client.utils import stop_execution
+from app.utils import stop_execution
 
 
 @dataclass

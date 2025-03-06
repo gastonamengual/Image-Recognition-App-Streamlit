@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from enum import StrEnum
 
-from client.settings import Settings
+from app.settings import Settings
 
 
 @dataclass
