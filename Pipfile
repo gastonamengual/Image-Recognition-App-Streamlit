@@ -17,3 +17,10 @@ ipykernel = "*"
 
 [requires]
 python_version = "3.12.9"
+
+[scripts]
+hook = "pre-commit install"
+format = "pre-commit run --all-files"
+test = "pytest ./tests -rA --doctest-modules --junitxml=pytest-report.xml --cov=. --cov-report=html --cov-report term-missing"
+build = "bash -c 'python setup.py clean --all && python setup.py bdist_wheel'"
+publish = "twine upload dist/*"
