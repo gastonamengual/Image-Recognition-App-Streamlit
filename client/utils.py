@@ -5,7 +5,7 @@ import streamlit as st
 from PIL import ImageFile
 
 
-def preprocess_image(image: ImageFile) -> bytes:
+def preprocess_image(image: ImageFile) -> str:
     buffer = io.BytesIO()
     image.save(buffer, format="jpeg")
     image_bytes = buffer.getvalue()
